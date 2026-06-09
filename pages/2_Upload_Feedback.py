@@ -4,10 +4,15 @@ import streamlit as st
 
 from services.database import insert_source_file, list_source_files
 from services.file_ingestion import extract_content
+from services.ui import page_intro
 from services.validation import SOURCE_TYPES, UAT_ROUNDS
 
-st.title("Upload Feedback")
-st.write("Upload one UAT feedback file and record where it came from.")
+page_intro(
+    "Upload feedback",
+    "Add one UAT feedback file and record enough source information for reviewers "
+    "to understand where each item came from.",
+    "Step 1 of 5",
+)
 
 with st.form("upload_feedback_form", clear_on_submit=False):
     uploaded_file = st.file_uploader(

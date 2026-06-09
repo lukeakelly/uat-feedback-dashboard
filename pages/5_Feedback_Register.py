@@ -16,9 +16,14 @@ from services.validation import (
     STATUSES,
     UAT_ROUNDS,
 )
+from services.ui import page_intro
 
-st.title("Feedback Register")
-st.write("View and maintain approved feedback. Archived rows are excluded by default.")
+page_intro(
+    "Feedback register",
+    "Maintain the approved UAT record, update delivery details and archive items "
+    "that are no longer active without removing their history.",
+    "Step 4 of 5",
+)
 
 approved = load_approved_feedback()
 if approved.empty:

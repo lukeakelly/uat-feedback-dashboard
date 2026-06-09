@@ -4,15 +4,18 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from services.database import create_tables
+from services.ui import apply_govai_branding
 
 load_dotenv()
 create_tables()
 
 st.set_page_config(
-    page_title="UAT Feedback Dashboard",
+    page_title="GovAI UAT Feedback Dashboard",
     page_icon=":material/check_circle:",
     layout="wide",
 )
+
+apply_govai_branding()
 
 pages_dir = Path(__file__).parent / "pages"
 navigation = st.navigation(

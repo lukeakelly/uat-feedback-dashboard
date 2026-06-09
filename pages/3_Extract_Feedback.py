@@ -7,9 +7,14 @@ from services.database import (
     list_source_files,
 )
 from services.fallback_extractor import extract_fallback
+from services.ui import page_intro
 
-st.title("Extract Feedback")
-st.write("Create pending feedback rows from an uploaded source.")
+page_intro(
+    "Extract feedback",
+    "Create structured, pending feedback items from an uploaded source. "
+    "Use AI assistance when approved, or the local fallback extractor.",
+    "Step 2 of 5",
+)
 st.warning("Extracted rows are not approved. Review them before they enter the register.")
 
 sources = list_source_files()

@@ -18,9 +18,14 @@ from services.validation import (
     STATUSES,
     validate_feedback_item,
 )
+from services.ui import page_intro
 
-st.title("Review Extracted Items")
-st.write("Edit the extracted rows, select the rows you have reviewed, then approve or reject them.")
+page_intro(
+    "Review extracted items",
+    "Check the original feedback, correct the structured fields and make an explicit "
+    "human decision before anything enters the approved register.",
+    "Step 3 of 5",
+)
 st.warning("Pending rows do not appear in the dashboard or approved register.")
 
 pending = load_pending_feedback()

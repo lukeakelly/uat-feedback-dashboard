@@ -2,16 +2,18 @@ import streamlit as st
 
 from services.dashboard import count_by, dashboard_metrics
 from services.database import load_approved_feedback
+from services.ui import page_intro
 
-st.title("UAT Feedback Dashboard")
-st.write(
-    "Upload UAT feedback, extract structured items, review each item, "
-    "and report on the approved register."
+page_intro(
+    "UAT feedback dashboard",
+    "Turn testing feedback into a clear, reviewed register for the GovAI Library. "
+    "Upload source material, check every extracted item and track approved feedback.",
+    "GovAI Library",
 )
 
 st.info(
-    "Extracted items are always held for human review. "
-    "Only approved items appear in dashboard metrics and exports."
+    "Human review is required. Extracted items remain pending until a reviewer "
+    "approves or rejects them."
 )
 
 approved = load_approved_feedback()

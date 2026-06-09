@@ -4,10 +4,15 @@ import streamlit as st
 
 from services.dashboard import count_by, dashboard_metrics
 from services.database import load_approved_feedback
+from services.ui import page_intro
 from services.validation import MUST_FIX_PRIORITIES, OPEN_STATUSES
 
-st.title("Dashboard")
-st.caption("All metrics and charts use approved, non-archived feedback only.")
+page_intro(
+    "Dashboard",
+    "See the approved UAT picture at a glance, including delivery priorities, "
+    "open issues, ownership and recurring themes.",
+    "Approved feedback only",
+)
 
 approved = load_approved_feedback()
 metrics = dashboard_metrics(approved)

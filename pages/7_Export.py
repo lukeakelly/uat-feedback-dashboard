@@ -4,9 +4,14 @@ import streamlit as st
 
 from services.database import load_approved_feedback, load_rejected_feedback
 from services.export_service import build_excel_export, dataframe_to_csv_bytes
+from services.ui import page_intro
 
-st.title("Export")
-st.write("Download the approved register and rejected feedback audit.")
+page_intro(
+    "Export feedback",
+    "Download the approved register and rejected-item audit for reporting, "
+    "handover or further analysis.",
+    "Step 5 of 5",
+)
 
 approved = load_approved_feedback()
 rejected = load_rejected_feedback()
