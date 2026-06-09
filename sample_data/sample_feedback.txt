@@ -1,0 +1,4 @@
+Search results do not show the document owner.
+The filter panel resets after opening a record and returning to results.
+Keyboard focus is difficult to see on the submit button.
+Could the record detail page include a copy-link action?

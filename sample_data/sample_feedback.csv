@@ -1,0 +1,4 @@
+tester_role,scenario,feedback
+Content editor,Find a policy,Search results rank an outdated policy above the current policy.
+Approver,Approve a submission,The approval confirmation message does not explain what happens next.
+Keyboard-only tester,Submit a record,The date picker cannot be completed without a mouse.
