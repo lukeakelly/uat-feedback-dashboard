@@ -1,5 +1,6 @@
 import streamlit as st
 
+from services.access_control import is_admin
 from services.database import (
     archive_approved_feedback,
     load_approved_feedback,
@@ -56,6 +57,18 @@ with st.expander("Filters", expanded=True):
 
 if filtered.empty:
     st.warning("No approved items match the selected filters.")
+    st.stop()
+
+if not is_admin():
+    st.info(
+        "Read-only view. Only the owner can edit or archive approved feedback."
+    )
+    st.dataframe(
+        filtered,
+        hide_index=True,
+        use_container_width=True,
+        height=560,
+    )
     st.stop()
 
 editor_data = filtered.copy()

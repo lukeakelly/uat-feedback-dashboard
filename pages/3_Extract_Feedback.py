@@ -1,5 +1,6 @@
 import streamlit as st
 
+from services.access_control import require_admin
 from services.ai_extractor import ai_is_available, extract_with_ai
 from services.database import (
     get_source_file,
@@ -8,6 +9,8 @@ from services.database import (
 )
 from services.fallback_extractor import extract_fallback
 from services.ui import page_intro
+
+require_admin()
 
 page_intro(
     "Extract feedback",

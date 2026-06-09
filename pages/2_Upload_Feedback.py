@@ -2,10 +2,13 @@ from pathlib import Path
 
 import streamlit as st
 
+from services.access_control import require_admin
 from services.database import insert_source_file, list_source_files
 from services.file_ingestion import extract_content
 from services.ui import page_intro
 from services.validation import SOURCE_TYPES, UAT_ROUNDS
+
+require_admin()
 
 page_intro(
     "Upload feedback",

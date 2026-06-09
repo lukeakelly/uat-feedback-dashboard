@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 
+from services.access_control import require_admin
 from services.database import (
     approve_pending_feedback,
     load_pending_feedback,
@@ -19,6 +20,8 @@ from services.validation import (
     validate_feedback_item,
 )
 from services.ui import page_intro
+
+require_admin()
 
 page_intro(
     "Review extracted items",

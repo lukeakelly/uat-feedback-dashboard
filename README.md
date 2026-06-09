@@ -14,6 +14,7 @@ review, stores approved feedback in SQLite, and provides a dashboard and exports
 - Maintain an editable approved register with soft archiving.
 - View KPIs, charts, priority tables, and recurring themes.
 - Export approved and rejected data to CSV or a three-sheet Excel workbook.
+- Give reviewers a read-only interface while owner actions require a password.
 
 ## Install
 
@@ -38,6 +39,26 @@ streamlit run app.py
 ```
 
 The app opens at `http://localhost:8501`.
+
+## Read-only reviewer access
+
+The app defaults to read-only mode. Read-only users can open Home, Feedback
+Register, Dashboard, and Export. They cannot upload, extract, approve, reject,
+edit, archive, or download the rejected-item audit.
+
+Set `APP_ADMIN_PASSWORD` in `.env` for local owner access. On Streamlit Community
+Cloud, add it in **App settings > Secrets**:
+
+```toml
+APP_ADMIN_PASSWORD = "use-a-long-unique-password"
+```
+
+The owner can enter this password in the sidebar to unlock the full workflow.
+Do not commit the password to Git.
+
+For a restricted review group, make the Community Cloud app private and invite
+reviewers by email. Streamlit's viewer role controls deployment management; the
+app's owner mode separately controls write operations inside the app.
 
 ## Optional OpenAI extraction
 
@@ -101,7 +122,8 @@ and approval, and CSV/Excel export generation.
 
 ## Known limitations
 
-- The MVP is designed for a single local user and has no authentication.
+- The MVP does not provide individual user accounts or per-user audit identity.
+- Owner mode uses a shared deployment password rather than individual accounts.
 - There is no duplicate detection beyond a human decision field.
 - Word source locations are approximate because paragraphs and tables are extracted
   as normalised blocks.
